@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>2. Mektup</title>
+  <style>
+    body {
+      background-color: #f6f1eb;
+      font-family: 'Segoe UI', sans-serif;
+      color: #5e504d;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .question {
+      margin-bottom: 40px;
+    }
+
+    button {
+      background-color: #d9c1a9;
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      margin: 8px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #c7ae98;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-weight: bold;
+      display: none;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #5e504d;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>2. mektuba ulaşmak için sorulara doğru cevap vermelisin 💌</h1>
+
+  <div id="quiz">
+    <div class="question" id="q1">
+      <p>1. Seni ilk Üsküdar’da karşılarken kulağımdaki çiçek hangi renkti?</p>
+      <button onclick="answer('q1','Beyaz')">Pembe</button>
+      <button onclick="answer('q1','Kırmızı')">Kırmızı</button>
+      <button onclick="answer('q1','Beyaz')">Beyaz</button>
+      <button onclick="answer('q1','Mavi')">Mavi</button>
+    </div>
+
+    <div class="question hidden" id="q2">
+      <p>2. Favori metro ağım hangisi?</p>
+      <button onclick="answer('q2','M4')">M4</button>
+      <button onclick="answer('q2','M5')">M5</button>
+      <button onclick="answer('q2','M3')">M3</button>
+      <button onclick="answer('q2','M7')">M7</button>
+    </div>
+
+    <div id="result">
+      🎉 Tebrikler! 2. mektuba ulaşmaya hak kazandın!
+      <a href="https://www.notion.so/Merhaba-sevgilim-22cb1c2000938014973cce573bd19e15" target="_blank">Mektubu Aç</a>
+    </div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      q1: "Beyaz",
+      q2: "M5"
+    };
+
+    const userAnswers = {};
+
+    function answer(questionId, selected) {
+      userAnswers[questionId] = selected;
+
+      if (selected === correctAnswers[questionId]) {
+        document.getElementById(questionId).classList.add('hidden');
+
+        if (questionId === "q1") {
+          document.getElementById("q2").classList.remove('hidden');
+        } else if (questionId === "q2") {
+          document.getElementById("result").style.display = "block";
+        }
+      } else {
+        alert("Hmm... Bir daha dene aşkım 🙈");
+      }
+    }
+  </script>
+
+</body>
+</html>
